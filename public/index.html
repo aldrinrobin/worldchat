@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Chat</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <!-- Join Screen -->
+  <div id="join-screen" class="screen active">
+    <div class="join-container">
+      <h1>🌍 World Chat</h1>
+      <p class="subtitle">Join the global conversation</p>
+      <form id="join-form">
+        <input
+          type="text"
+          id="name-input"
+          placeholder="Enter your display name"
+          maxlength="20"
+          required
+          autocomplete="off"
+        >
+        <button type="submit">Join Chat</button>
+      </form>
+      <div id="join-error" class="error hidden"></div>
+      <p class="hint">No signup required • 2-20 characters</p>
+    </div>
+  </div>
+
+  <!-- Chat Screen -->
+  <div id="chat-screen" class="screen">
+    <!-- Header -->
+    <header class="chat-header">
+      <div class="header-left">
+        <h2>🌍 World Chat</h2>
+        <div id="connection-status" class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Connected</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="users-online">
+          <span id="user-count">0</span> online
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="chat-main">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h3>Online Users</h3>
+        <div id="user-list" class="user-list">
+          <!-- Users populated by JS -->
+        </div>
+      </aside>
+
+      <!-- Chat Area -->
+      <div class="chat-area">
+        <div id="messages" class="messages">
+          <!-- Messages populated by JS -->
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+          <textarea
+            id="message-input"
+            placeholder="Type a message... (Enter to send, Shift+Enter for new line)"
+            maxlength="500"
+            rows="1"
+          ></textarea>
+          <button id="send-button" aria-label="Send message">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <div id="input-error" class="error hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notifications -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Socket.IO client library (served by Socket.IO server) -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
